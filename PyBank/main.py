@@ -8,7 +8,6 @@ import csv
 file_input = input("Which file would you like to analyze? ")
 csvpath = os.path.join('raw_data',file_input)
 
-
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')  
     #print (csvreader)
@@ -80,6 +79,3 @@ print ("Average Revenue Change: " + "$" + str(round (avg_change, 1)))
 print ("Greatest Increase in Revenue: " + str(max_month) + " " + "$" + (str(max_dif)))
 print ("Greatest Decrease in Revenue: " + str(min_month) + " " + "$" + (str(min_dif)))
 print ("------------------------------------")
-
-#Started out creating my own functions but then switched to using Python's built-in functions all in one loop as per Dylan's suggestion and based on wrestling exercise
-#Code works for both csv sheets!
