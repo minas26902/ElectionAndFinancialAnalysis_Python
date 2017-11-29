@@ -4,7 +4,6 @@ import csv
 
 #Create file path
 #To get this path to be recognized I need to start inside of the raw_data directory
-
 #User will be prompted to add a file to be analyzed - example: budget_data_1.csv or budget_data_2.csv
 file_input = input("Which file would you like to analyze? ")
 csvpath = os.path.join('raw_data',file_input)
@@ -12,7 +11,7 @@ csvpath = os.path.join('raw_data',file_input)
 
 with open(csvpath, newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')  
-    print (csvreader)
+    #print (csvreader)
 
     #Skips the header row
     next(csvreader, None) 
@@ -38,7 +37,6 @@ with open(csvpath, newline='') as csvfile:
     print ("Total Revenue: " + "$" + str(new_total_revenue))
         
     #Create another for loop to calculate avg change, max and min change
-    
     for i in range (1,len(total_revenue)):
         
         #Calculate the change in revenue between months and the average change in revenue over the entire period
@@ -49,7 +47,6 @@ with open(csvpath, newline='') as csvfile:
     #print (new_total_months)
     #print (avg_change)
 
-
         #Find the greatest increase in revenue (date and amount) over the entire period
         max_dif = max (rev_dif)
         
@@ -59,8 +56,8 @@ with open(csvpath, newline='') as csvfile:
     #print (min_dif)
        
        #Find index for max_dif and min_dif and apply to total_months list to find corresponding month. 
-       #max_dif and min_dif are based on rev_dif list which has only 40 items, compared to total_months list (41 items) 
-       #Adjust accordingly by adding 1 to index of total_months
+       #max_dif and min_dif are based on rev_dif list which has only 40 items (first row is empty, since rev_dif starts at i2, compared to total_months list (41 items) 
+       #Adjust accordingly by adding 1 to index of total_months, so that date an difference line up properly
         max_month= total_months[(rev_dif.index(max_dif)) + 1]
         min_month= total_months[(rev_dif.index(min_dif)) + 1]
     #print (max_month)
@@ -71,7 +68,7 @@ with open(csvpath, newline='') as csvfile:
     print ("Greatest Decrease in Revenue: " + str(min_month) + " " + "$" + (str(min_dif)))
     print ("------------------------------------")
 
-#Export a txt file with a summary output - MAKE SURE TO GIVE A DIFFERENT FILE NAME FOR EACH SUMMARY OUTPUT
+#Export summary output into a text file - MAKE SURE TO GIVE A DIFFERENT FILE NAME FOR EACH SUMMARY OUTPUT
 import sys
 sys.stdout = open('summary_output.txt','wt')
 print ("")
