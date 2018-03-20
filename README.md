@@ -1,2 +1,2 @@
 # Python_challenge
-In this exercise I used Python scripts to analyze different datasets.
+In this exercise I utilized Python to analyze financial and election datasets.
